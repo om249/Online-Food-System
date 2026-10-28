@@ -3,7 +3,7 @@ target/
 *.log
 .env
 .env.*
-!.env.example
+.env.example
 .idea/
 .vscode/
 .settings/

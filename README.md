@@ -12,15 +12,21 @@ Console-based Java project using Jakarta Persistence API (JPA), Hibernate ORM, M
 ## Setup
 1. Install JDK 25+, Maven, and MySQL 8.
 2. Create the database: `CREATE DATABASE food_ordering_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;` (or run `database/schema.sql`).
-3. Copy `.env.example` to `.env` and set your local MySQL username and password. The Windows run script loads `.env` automatically; process environment variables take precedence. `.env` is ignored by Git; do not commit real credentials.
+3. Create a private `.env` file and set your local MySQL username and password. The Windows run script loads `.env` automatically; process environment variables take precedence. `.env` and `.env.example` are ignored by Git; do not commit real credentials.
 
-Windows PowerShell (create your private local configuration):
+Windows PowerShell (create and edit your private local configuration):
 ```powershell
-Copy-Item .env.example .env
 notepad .env
 ```
 
-Set `DB_USER` and `DB_PASSWORD` in `.env` to the credentials configured in your local MySQL server. Do not paste database passwords into chat or source control.
+Add these settings to `.env`, using the credentials configured in your local MySQL server:
+```dotenv
+DB_URL=jdbc:mysql://localhost:3306/food_ordering_db?useSSL=false&serverTimezone=UTC
+DB_USER=root
+DB_PASSWORD=YOUR_MYSQL_PASSWORD
+HIBERNATE_DDL=update
+```
+Do not paste database passwords into chat or source control.
 Linux/macOS:
 ```bash
 export DB_URL='jdbc:mysql://localhost:3306/food_ordering_db?useSSL=false&serverTimezone=UTC'
